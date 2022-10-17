@@ -1,15 +1,22 @@
 import axios from "axios";
-import MultipleGifResponse from "../models/MultipleGifResponse";
-import SingleGifResponse from "../models/SingleGifResponse";
+import { DonutDetail } from "../models/Donut";
+import MultipleDonutResponse from "../models/MultipleDonutsResponse";
+import SingleDonutResponse from "../models/SingleDonutResponse";
 
-const key: string = process.env.REACT_APP_GIPHY_KEY || "";
-
-export const getAllDonuts = (): Promise<MultipleGifResponse> => {
+export const getAllDonuts = (): Promise<MultipleDonutResponse> => {
   return axios
-    .get("https://grandcircusco.github.io/demo-apis/donuts.json", {
-      params: { api_key: key },
-    })
+    .get("https://grandcircusco.github.io/demo-apis/donuts.json")
     .then((response) => {
       return response.data;
     });
+};
+
+export const getDonutById = (id: string): Promise<DonutDetail> => {
+  return axios
+    .get(
+      `https://grandcircusco.github.io/demo-apis/donuts/${encodeURIComponent(
+        id
+      )}.json`
+    )
+    .then((response) => response.data);
 };

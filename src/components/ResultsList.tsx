@@ -1,17 +1,17 @@
-import Gif from "../models/Gif";
+import Donut from "../models/Donut";
 import Result from "./Result";
 import "./ResultsList.css";
 
 interface Props {
-  gifs: Gif[];
+  donuts: Donut[];
 }
 
-const ResultsList = ({ gifs }: Props) => {
+const ResultsList = ({ donuts }: Props) => {
   return (
     <div className="ResultsList">
       <ul>
-        {gifs.map((gif) => (
-          <Result gif={gif} key={gif.id} />
+        {donuts.map((donut) => (
+          <Result donut={donut} key={donut.id} />
         ))}
       </ul>
     </div>

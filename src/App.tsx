@@ -7,6 +7,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import Details from "./components/Details";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Main />} />
+
+          <Route path="/donuts/:id" element={<Details />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>

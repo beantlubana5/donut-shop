@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Gif from "../models/Gif";
+import Donut from "../models/Donut";
 import { getAllDonuts } from "../services/DonnutService";
 import "./Main.css";
 import ResultsList from "./ResultsList";
@@ -7,19 +7,19 @@ import ResultsList from "./ResultsList";
 import { useSearchParams } from "react-router-dom";
 
 const Main = () => {
-  const [donuts, setDonuts] = useState<Gif[]>([]);
+  const [donuts, setDonuts] = useState<Donut[]>([]);
   const [searchParams] = useSearchParams();
   const term = searchParams.get("term");
 
   useEffect(() => {
     getAllDonuts().then((response) => {
-      setDonuts(response.data);
+      setDonuts(response.results);
     });
   }, []);
 
   return (
     <div className="Main">
-      <ResultsList gifs={donuts} />
+      <ResultsList donuts={donuts} />
     </div>
   );
 };

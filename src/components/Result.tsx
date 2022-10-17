@@ -1,19 +1,19 @@
-import Gif from "../models/Gif";
+import Donut from "../models/Donut";
 import { Link } from "react-router-dom";
 import "./Result.css";
 
 interface Props {
-  gif: Gif;
+  donut: Donut;
 }
 
-const Result = ({ gif }: Props) => {
+const Result = ({ donut }: Props) => {
   return (
     <li className="Result">
-      <h2>{gif.title}</h2>
-      <Link to={`/gifs/${encodeURIComponent(gif.id)}`}>
-        <img src={gif.images.original.url} alt={gif.title} />
+      <Link to={`/donuts/${encodeURIComponent(donut.id)}`}>
+        <h2>{donut.name}</h2>
+        {/* <img src={donut.photo} alt={donut.name} /> */}
       </Link>
-      <a href={gif.url}>Link to original</a>
+      {/* <a href={donut.photo}>Link to original</a> */}
     </li>
   );
 };
